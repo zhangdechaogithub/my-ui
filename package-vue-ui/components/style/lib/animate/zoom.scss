@@ -1,0 +1,174 @@
+@mixin zoom-ani($className, $keyframeName, $duration: $animation-duration-base) {
+    @include make-ani($className, $keyframeName, $duration);
+
+    .#{$className}-enter,
+    .#{$className}-appear {
+        transform: scale(0);
+        animation-timing-function: $ease-out-circ;
+    }
+
+    .#{$className}-leave {
+        animation-timing-function: $ease-in-out-circ;
+    }
+}
+
+// For Modal, Select choosen item
+@include zoom-ani(zoom, $prefix+'Zoom');
+// For Popover, Popconfirm, Dropdown
+@include zoom-ani(zoom-big, $prefix+'ZoomBig');
+// For Tooltip
+@include zoom-ani(zoom-big-fast, $prefix+ 'ZoomBig', $animation-duration-fast);
+
+@include zoom-ani(zoom-up, $prefix+'ZoomUp');
+@include zoom-ani(zoom-down, $prefix+'ZoomDown');
+@include zoom-ani(zoom-left, $prefix+'ZoomLeft');
+@include zoom-ani(zoom-right, $prefix+'ZoomRight');
+
+@keyframes #{$prefix}ZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomOut {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+
+@keyframes #{$prefix}ZoomBigIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomBigOut {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes #{$prefix}ZoomUpIn {
+    0% {
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform-origin: 50% 0%;
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomUpOut {
+    0% {
+        transform-origin: 50% 0%;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes #{$prefix}ZoomLeftIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 50%;
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform-origin: 0% 50%;
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomLeftOut {
+    0% {
+        transform-origin: 0% 50%;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 0% 50%;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes #{$prefix}ZoomRightIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 50%;
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform-origin: 100% 50%;
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomRightOut {
+    0% {
+        transform-origin: 100% 50%;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 100% 50%;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes #{$prefix}ZoomDownIn {
+    0% {
+        opacity: 0;
+        transform-origin: 50% 100%;
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform-origin: 50% 100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes #{$prefix}ZoomDownOut {
+    0% {
+        transform-origin: 50% 100%;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 50% 100%;
+        transform: scale(0.8);
+    }
+}

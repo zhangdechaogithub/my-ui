@@ -1,0 +1,85 @@
+@import '../../style/themes/default';
+@import '../../style/_mixins/index';
+@import './mixin';
+
+.#{$prefix}-row {
+    @include make-row;
+    display: block;
+    box-sizing: border-box;
+}
+
+.#{$prefix}-row-flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    &:before,
+    &:after {
+        display: flex;
+    }
+}
+
+.#{$prefix}-row-flex-start {
+	justify-content: flex-start;
+}
+
+.#{$prefix}-row-flex-center {
+	justify-content: center;
+}
+
+.#{$prefix}-row-flex-end {
+	justify-content: flex-end;
+}
+
+.#{$prefix}-row-flex-space-between {
+	justify-content: space-between;
+}
+
+.#{$prefix}-row-flex-space-around {
+	justify-content: space-around;
+}
+
+.#{$prefix}-row-flex-top {
+	align-items: flex-start;
+}
+
+.#{$prefix}-row-flex-middle {
+	align-items: center;
+}
+
+.#{$prefix}-row-flex-bottom {
+	align-items: flex-end;
+}
+
+.#{$prefix}-col {
+	position: relative;
+	display: block;
+}
+
+@include make-grid-columns;
+@include make-grid;
+
+@include make-grid(-xs);
+
+@media (min-width: $screen-sm-min) {
+    @include make-grid(-sm);
+}
+
+
+@media (min-width: $screen-md-min) {
+    @include make-grid(-md);
+}
+
+
+@media (min-width: $screen-lg-min) {
+    @include make-grid(-lg);
+}
+
+
+@media (min-width: $screen-xl-min) {
+    @include make-grid(-xl);
+}
+
+
+@media (min-width: $screen-xxl-min) {
+    @include make-grid(-xxl);
+}

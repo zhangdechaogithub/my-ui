@@ -1,0 +1,23 @@
+@mixin fade-ani($className, $keyframeName){
+	@include make-ani($className, $keyframeName);
+}
+
+@include fade-ani(fade, #{$prefix}Fade);
+
+@keyframes #{$prefix}FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefix}FadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

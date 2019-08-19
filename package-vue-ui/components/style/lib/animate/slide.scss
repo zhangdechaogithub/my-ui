@@ -1,0 +1,130 @@
+@mixin slide-ani($className, $keyframeName) {
+    @include make-ani($className, $keyframeName);
+
+    .#{$className}-enter,
+    .#{$className}-appear {
+        opacity: 0;
+        animation-timing-function: $ease-out-quint;
+    }
+
+    .#{$className}-leave {
+        animation-timing-function: $ease-in-quint;
+    }
+}
+
+@keyframes #{$prefix}SlideUpIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes #{$prefix}SlideUpOut {
+    0% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(0.8);
+    }
+}
+
+@keyframes #{$prefix}SlideDownIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 100%;
+        transform: scaleY(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes #{$prefix}SlideDownOut {
+    0% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 100% 100%;
+        transform: scaleY(0.8);
+    }
+}
+
+@keyframes #{$prefix}SlideLeftIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleX(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes #{$prefix}SlideLeftOut {
+    0% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleX(0.8);
+    }
+}
+
+@keyframes #{$prefix}SlideRightIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 0%;
+        transform: scaleX(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 100% 0%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes #{$prefix}SlideRightOut {
+    0% {
+        opacity: 1;
+        transform-origin: 100% 0%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform-origin: 100% 0%;
+        transform: scaleX(0.8);
+    }
+}
+
+@include slide-ani(slide-up, $prefix +'SlideUp');
+@include slide-ani(slide-down, $prefix + 'SlideDown');
+@include slide-ani(slide-left, $prefix + 'SlideLeft');
+@include slide-ani(slide-right, $prefix + 'SlideRight');
