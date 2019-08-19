@@ -85,19 +85,21 @@
                 <Button type="primary" icon="cloud" />
                 <Button type="primary" icon="cloud-download" />
             </ButtonGroup>
+            <Dropdown></Dropdown>
         </div>
     </div>
 </template>
 <script>
-import { Test } from '../../../package-vue/es/index.js'
-import { Icon } from '../../../package-vue/es/index.js'
-import { Col } from '../../../package-vue/es/index.js'
-import { Row } from '../../../package-vue/es/index.js'
-import { Affix } from '../../../package-vue/es/index.js'
-import { Alert } from '../../../package-vue/es/index.js'
-import { Anchor } from '../../../package-vue/es/index.js'
-import { AutoComplete } from '../../../package-vue/es/index.js'
-import { Button } from '../../../package-vue/es/index.js'
+import { Test } from '../../../package-vue-ui/es/index.js'
+import { Icon } from '../../../package-vue-ui/es/index.js'
+import { Col } from '../../../package-vue-ui/es/index.js'
+import { Row } from '../../../package-vue-ui/es/index.js'
+import { Affix } from '../../../package-vue-ui/es/index.js'
+import { Alert } from '../../../package-vue-ui/es/index.js'
+import { Anchor } from '../../../package-vue-ui/es/index.js'
+import { AutoComplete } from '../../../package-vue-ui/es/index.js'
+import { Button } from '../../../package-vue-ui/es/index.js'
+import { Dropdown } from '../../../package-vue-ui/es/index.js'
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
 export default {
@@ -113,7 +115,8 @@ export default {
         Link,
         AutoComplete,
         Button,
-        ButtonGroup
+        ButtonGroup,
+        Dropdown
     },
     mounted() {},
     data() {

@@ -11,6 +11,7 @@ import { default as Anchor } from './anchor'
 import { default as Alert } from './alert'
 import { default as AutoComplete } from './auto-complete'
 import { default as Button } from './button'
+import { default as Dropdown } from './dropdown'
 import { Row } from './grid'
 import { Col } from './grid'
 import { default as Select } from './Select'
@@ -20,6 +21,7 @@ const components = [
     AutoComplete,
     Alert,
     Button,
+    Dropdown,
     Icon,
     Col,
     Select,
@@ -44,6 +46,7 @@ export {
     Button,
     Icon,
     Col,
+    Dropdown,
     Select,
     Row,
     Test,

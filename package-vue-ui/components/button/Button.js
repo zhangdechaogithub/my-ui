@@ -1,6 +1,6 @@
 import {Wave, filterEmpty, getClassName, getUpperCasePrefix} from '../_util/'
 import Icon from '../icon/'
-import buttonTypes from './ButtonTypes'
+import buttonTypes from './buttonTypes'
 
 const props = buttonTypes()
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/
