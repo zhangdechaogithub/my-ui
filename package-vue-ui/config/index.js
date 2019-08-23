@@ -47,7 +47,7 @@ if (isDev) {
     const watcher = rollup.watch(watchOptions)
     watcher.on('event', event => {
         if (event.code === 'END') {
-            exists('./components/icon/font', './es/font', copyFunc)
+            exists('./components/style/font', '../test/public/font', copyFunc)
             console.log('event state-----success-------watching------------')
         }
         if(event.code === 'ERROR'){
@@ -55,7 +55,7 @@ if (isDev) {
         }
     })
 } else {
-    exists('./components/icon/font', './dist/font', copyFunc)
-    exists('./components/icon/font', './es/icon/font', copyFunc)
+    exists('./components/style/font', './dist/font', copyFunc)
+    exists('./components/style/font', './es/style/font', copyFunc)
     console.log('--------------success---------------')
 }

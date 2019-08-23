@@ -12,39 +12,6 @@
     }
 }
 
-@include move-ani(move-up, $prefix +'MoveUp');
-@include move-ani(move-down, $prefix + 'Movedown');
-@include move-ani(move-left, $prefix + 'MoveLeft');
-@include move-ani(move-right, $prefix + 'MoveRight');
-
-@keyframes #{$prefix}MoveDownIn {
-    0% {
-        transform-origin: 0 0;
-        transform: translateY(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform-origin: 0 0;
-        transform: translateY(0%);
-        opacity: 1;
-    }
-}
-
-@keyframes #{$prefix}MoveDownOut {
-    0% {
-        transform-origin: 0 0;
-        transform: translateY(0%);
-        opacity: 1;
-    }
-
-    100% {
-        transform-origin: 0 0;
-        transform: translateY(100%);
-        opacity: 0;
-    }
-}
-
 @keyframes #{$prefix}MoveLeftIn {
     0% {
         transform-origin: 0 0;
@@ -129,3 +96,36 @@
         opacity: 0;
     }
 }
+
+@keyframes #{$prefix}MoveDownIn {
+    0% {
+        transform-origin: 0 0;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform-origin: 0 0;
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes #{$prefix}MoveDownOut {
+    0% {
+        transform-origin: 0 0;
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform-origin: 0 0;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@include move-ani(move-up, $prefix +'MoveUp');
+@include move-ani(move-down, $prefix + 'MoveDown');
+@include move-ani(move-left, $prefix + 'MoveLeft');
+@include move-ani(move-right, $prefix + 'MoveRight');

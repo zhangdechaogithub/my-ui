@@ -1,4 +1,4 @@
-@mixin zoom-ani($className, $keyframeName, $duration: $animation-duration-base) {
+@mixin zoom-ani($className, $keyframeName, $duration: $ani-base) {
     @include make-ani($className, $keyframeName, $duration);
 
     .#{$className}-enter,
@@ -12,33 +12,22 @@
     }
 }
 
-// For Modal, Select choosen item
-@include zoom-ani(zoom, $prefix+'Zoom');
-// For Popover, Popconfirm, Dropdown
-@include zoom-ani(zoom-big, $prefix+'ZoomBig');
-// For Tooltip
-@include zoom-ani(zoom-big-fast, $prefix+ 'ZoomBig', $animation-duration-fast);
-
-@include zoom-ani(zoom-up, $prefix+'ZoomUp');
-@include zoom-ani(zoom-down, $prefix+'ZoomDown');
-@include zoom-ani(zoom-left, $prefix+'ZoomLeft');
-@include zoom-ani(zoom-right, $prefix+'ZoomRight');
 
 @keyframes #{$prefix}ZoomIn {
     0% {
         opacity: 0;
-        transform: scale(0.2);
+        transform: scale(0.2, 0.2);
     }
 
     100% {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1, 1);
     }
 }
 
 @keyframes #{$prefix}ZoomOut {
     0% {
-        transform: scale(1);
+        transform: scale(1, 1);
     }
 
     100% {
@@ -172,3 +161,14 @@
         transform: scale(0.8);
     }
 }
+
+@include zoom-ani(zoom, #{$prefix}Zoom);
+
+@include zoom-ani(zoom-big, #{$prefix}ZoomBig);
+
+@include zoom-ani(zoom-big-fast,#{$prefix}ZoomBig, $ani-fast);
+
+@include zoom-ani(zoom-up, #{$prefix}ZoomUp);
+@include zoom-ani(zoom-down, #{$prefix}ZoomDown);
+@include zoom-ani(zoom-left, #{$prefix}ZoomLeft);
+@include zoom-ani(zoom-right, #{$prefix}ZoomRight);

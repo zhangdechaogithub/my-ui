@@ -11,7 +11,7 @@ const NAME = 'demo'
 var distConfig = (cModuleMap, external, isDev) => ({
     input: { index: 'components/index.js' },
     output: {
-        dir: isDev ? 'es' : 'dist',
+        dir: 'dist',
         format: 'es',
         entryFileNames: isDev ? 'index.js' : `${NAME}.js`,
         exports: 'named'
@@ -28,7 +28,7 @@ var distConfig = (cModuleMap, external, isDev) => ({
                 }]
             ],
             inject: isDev,
-            extract: isDev ? false : `dist/${NAME}.min.css`,
+            extract: isDev? `../test/public/index.css`:`dist/${NAME}.min.css`,
             plugins: [autoprefixer, cssnano]
         }),
         babel({

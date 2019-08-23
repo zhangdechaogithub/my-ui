@@ -1,43 +1,8 @@
-import TransitionEvents from './animate/Event'
-import { default as cssAnimation, isCssAnimationSupported } from './animate/index'
-export { cssAnimation, isCssAnimationSupported, TransitionEvents } //animate
-
-import { default as BaseMixin } from './baseMixin'
-export { BaseMixin } //baseMixin
+const CLASSNAME = 'demo'
+export var getPrefix = () => CLASSNAME
+export var getPrefixCls = (str) => `${CLASSNAME}-${str}`
 
 import {
-    getWindow,
-    getClassName,
-    getUpperCasePrefix,
-    getPrefix,
-    getScroll,
-    getElRect,
-    getOffset,
-    getOffsetTop,
-    easeInOutCubic,
-    scrollTo
-} from './domOpt'
-export {
-    getWindow,
-    getClassName,
-    getUpperCasePrefix,
-    getPrefix,
-    getScroll,
-    getElRect,
-    getOffset,
-    getOffsetTop,
-    easeInOutCubic,
-    scrollTo
-} //export domOpt
-
-import { default as getRequestAnimationFrame, cancelRequestAnimationFrame } from './getRequestAnimationFrame'
-export { getRequestAnimationFrame, cancelRequestAnimationFrame } //getRequestAnimationFrame
-
-import { default as getTransitionProps } from './getTransitionProps'
-export { getTransitionProps }
-
-import {
-    getType,
     camelize,
     parseStyleText,
     hasProp,
@@ -62,10 +27,12 @@ import {
     initDefaultProps,
     mergeProps,
     isValidElement,
-} from './props-util'
+    cloneVNode,
+    cloneVnodes,
+    cloneElement
+} from './vnode/'
 
 export {
-    getType,
     camelize,
     parseStyleText,
     hasProp,
@@ -90,16 +57,16 @@ export {
     initDefaultProps,
     mergeProps,
     isValidElement,
-} //props-util
+    cloneVNode,
+    cloneVnodes,
+    cloneElement
+}
 
-import { default as wrapperRaf } from './raf'
-export { wrapperRaf }
+import { addEventListener, triggerEvent } from './dom/event'
+export { addEventListener, triggerEvent }
 
-import { cancelAnimationTimeout, requestAnimationTimeout } from './requestAnimationTimeout'
-export { cancelAnimationTimeout, requestAnimationTimeout }
+import { rafFunc } from './dom/raf'
+export { rafFunc }
 
-import { cloneVNode, cloneVnodes, cloneElement } from './vnode'
-export { cloneVNode, cloneVnodes, cloneElement }
-
-import { default as Wave } from './Wave'
-export { Wave }
+import { isDOM } from './dom/domOpt'
+export { isDOM }

@@ -1,4 +1,2 @@
-@import '../themes/default';
-@import '../_mixins/index';
-@import 'base';
-@import 'ani';
+@import './reset.scss';
+@import './animate/index.scss';

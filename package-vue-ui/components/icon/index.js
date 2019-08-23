@@ -1,5 +1,3 @@
-import './font/iconfont.css'
-
 const Icon = {
     name: 'Icon',
     props: {

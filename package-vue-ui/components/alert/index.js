@@ -1,136 +1,129 @@
 import './style/index.scss'
-
-import { BaseMixin, getClassName, getTransitionProps } from '../_util/'
-
+import { getPrefixCls } from '../_util/'
 import Icon from '../icon/'
-
 const Alert = {
+    name: 'Alert',
     props: {
         type: {
-            validator(val){
+            validator(val) {
                 return ['success', 'info', 'warning', 'error'].includes(val)
             }
         },
         closable: Boolean,
-        closeText: null,
-        message: null,
+        msg: null,
         description: null,
         afterClose: Function,
         showIcon: Boolean,
-        iconType: String,
-        banner: Boolean,
-        icon: null
+        width: Number,
+        autoHide: {
+            type: Boolean,
+            default: false
+        },
+        time: {
+            type: Number,
+            default: 2
+        }
     },
-    name: 'Alert',
-    mixins: [BaseMixin],
     data() {
         return {
-            closing: true,
-            closed: false,
-            msg: 'hello world2'
+            closed: false
+        }
+    },
+    mounted() {
+        if (this.autoHide) {
+            setTimeout(() => {
+                this.closed = true
+            }, this.time * 1000)
         }
     },
     methods: {
-        handleClose(e) {
-            e.preventDefault()
-            const dom = this.$el
-
-            dom.style.height = `${dom.offsetHeight}px`
-            dom.style.height = `${dom.offsetHeight}px`
-
-            this.setState({
-                closing: false
-            })
-            this.$emit('close', e)
-        },
-        animationEnd() {
-            this.setState({
-                closed: true,
-                closing: true,
-            });
-            this.afterClose && this.afterClose()
-        }
-    },
-    render(h) {
-        const { prefixCls = getClassName('alert'), banner, closing, closed } = this
-        let { closable, type, showIcon, iconType } = this
-
-        const closeText = this.getComponentFromProp('closeText')
-        const description = this.getComponentFromProp('description')
-        const message = this.getComponentFromProp('message')
-        const icon = this.getComponentFromProp('icon')
-        //default banner has icon
-        showIcon = banner && showIcon === undefined ? true : showIcon
-        //warning icon is default
-        type = banner && type === undefined ? 'waring' : type || 'info'
-
-        let iconTheme = 'filled'
-
-        if (!iconType) {
+        getIconCls(type) {
+            let icon
             switch (type) {
                 case 'success':
-                    iconType = 'check-circle-fill'
-                    break;
+                    icon = 'check-circle-fill'
+                    break
                 case 'info':
-                    iconType = 'info-circle-fill'
-                    break;
+                    icon = 'info-circle-fill'
+                    break
                 case 'error':
-                    iconType = 'close-circle-fill'
-                    break;
+                    icon = 'close-circle-fill'
+                    break
                 case 'warning':
-                    iconType = 'warning-circle-fill'
-                    break;
-                default:
-                    iconType = 'default'
+                    icon = 'warning-circle-fill'
+                    break
             }
-            //use outline icon in alert with description
-            if (description) {
-                iconTheme = 'outlined'
+            return icon
+        },
+        getIcon(type, cls) {
+            return <Icon type={type} class={cls}/>
+        },
+        getPNode(cls, msg) {
+            return <p class={cls}>{msg}</p>
+        },
+        getAlertNode() {
+            const prefixCls = getPrefixCls('alert')
+            let { description, msg, type, showIcon, width, closable, closed } = this
+            if (!type) {
+                type = 'info'
             }
-        }
-        //closeable when closeText is assigned
-        if (closeText) {
-            closable = true
-        }
+            const classes = [`${prefixCls}`, `${prefixCls}-${type}`]
+            let style = {
+                width: this.widthValidate(width)
+            }
 
-        const alertCls = {
-            [`${prefixCls}`]: true,
-            [`${prefixCls}-${type}`]: true,
-            [`${prefixCls}-close`]: !closing,
-            [`${prefixCls}-with-description`]: !!description,
-            [`${prefixCls}-no-icon`]: !showIcon,
-            [`${prefixCls}-banner`]: !!banner,
-            [`${prefixCls}-closable`]: closable
+            const iconNode = this.getIcon(this.getIconCls(type))
+            const msgNode = this.getPNode(`${prefixCls}-msg`, msg)
+            const descriptionNode = this.getPNode(`${prefixCls}-description`, description)
+            const closeNode = <a onClick={this.closeOnClick}> {this.getIcon('close', `${prefixCls}-close`)}</a>
+            return (
+                <div v-show={!this.closed} class={classes} style={style}>
+					<div class={`${prefixCls}-icon`}>
+            			{showIcon ? iconNode : null}
+            		</div>
+					<div class={`${prefixCls}-txt`}>
+						{msg? msgNode : null}
+						{description ? descriptionNode : null}
+					</div>
+					{closable ? closeNode : null}
+				</div>
+            )
+        },
+        widthValidate(width) {
+            if (width < 600 && width > 150) {
+                return `${width}px`
+            }
+            return 'auto'
+        },
+        closeOnClick(e) {
+            e.preventDefault()
+            this.closed = true
+            this.$emit('close')
         }
+    },
+    render() {
+        const alertNode = <transition></transition>
+        const alertProps = {
+            propsData: {
+                name: 'zoom'
+            },
+            listeners: {
+                afterLeave: () => {
+                	if(this.afterClose){
+                		this.afterClose()
+                	}
+                	this.$el.remove()
+                }
+            },
+            children: [this.getAlertNode()]
+        }
+        alertNode.componentOptions = Object.assign(alertNode.componentOptions, alertProps)
 
-        const closeIcon = closable ? (
-            <a onClick={this.handleClose} class={`${prefixCls}-close-icon`}>
-                {closeText || <Icon type="close" />}
-            </a>
-        ) : null
-        const iconNode = showIcon ? (
-            <Icon class={`${prefixCls}-icon`} type={iconType}/>
-        ) : null
+        return alertNode
 
-        const transitionProps = getTransitionProps(`${prefixCls}-slide-up`, {
-            appear: false,
-            afterLeave: this.animationEnd
-        })
-        return closed ? null : (
-            <transition {...transitionProps}>
-                <div v-show={closing} class={alertCls} data-show={closing}>
-                    {showIcon ? iconNode : null}
-                    <span class={`${prefixCls}-message`}>{message}</span>
-                    <span class={`${prefixCls}-description`}>{description}</span>
-                    {closeIcon}
-                </div>
-            </transition>
-        )
     }
 }
-
 Alert.install = (Vue) => {
     Vue.component(Alert.name, Alert)
 }
-
 export default Alert

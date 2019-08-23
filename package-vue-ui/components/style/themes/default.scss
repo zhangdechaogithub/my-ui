@@ -1,11 +1,8 @@
-//
 $prefix: demo;
 
-//colors
 $primary-color: #1890ff;
 $info-color: $primary-color;
 $success-color: #52c41a;
-$process-color: $primary-color;
 $error-color: #f5222d;
 $highlight-color: #f5222d;
 $warning-color: #fa8c16;
@@ -13,69 +10,29 @@ $normal-color: #d9d9d9;
 $white: #fff;
 $black: #000;
 
-//
-$primary-1: #e6f7ff;
-$primary-2: #bae7ff;
-$primary-3: #91d5ff;
-$primary-4: #69c0ff;
-$primary-5: #40a9ff;
-$primary-6: #1890ff;
-$primary-7: #096dd9;
-$primary-8: #0050b3;
-$primary-9: #003a8c;
-$primary-10: #002766;
+$text-color: #333;
+$text-color-dark: #000;
+$text-color-light: #888;
 
-//
-$body-background: #fff;
-//
-$component-background: #fff;
-$font-family: "Chinese Quote",
-"Segoe UI",
-"PingFang SC",
-"Hiragino Sans GB",
-"Microsoft YaHei",
-Arial;
+$font-size: 14px;
+$font-size-sm: 12px;
+$font-size-lg: 20px;
 
-$code-family: Consolas,
-"Liberation Mono";
+$border-radius: 4px;
+$border-radius-sm: 2px;
 
-$heading-color: RGB(0, 0, 0, .85);
-$heading-color-dark: RGB(0, 0, 0, 1);
-$text-color: RGB(0, 0, 0, .65);
-$text-color-secondary: RGB(0, 0, 0, .45);
-$text-color-dark:RGB(0, 0, 0, .85);
-$text-color-secondary-dark:RGB(1, 1, 1, .65);
-$font-variant-base: tabular-nums;
-$font-size-base: 14px;
-$font-size-lg : $font-size-base+2px;
-$font-size-sm : 12px;
-$line-height-base : 1.5;
-$border-radius-base : 4px;
-$border-radius-sm : 2px;
+$padding-lg : 24px;
+$padding-md : 16px;
+$padding-sm : 12px;
+$padding-xs : 8px;
 
-//vertical padding
-//
-$padding-lg : 24px; // containers
-$padding-md : 16px; // small containers and buttons
-$padding-sm : 12px; // Form controls and items
-$padding-xs : 8px; // small items
+$margin-lg : 24px;
+$margin-md : 16px;
+$margin-sm : 12px;
+$margin-xs : 8px;
 
-// vertical padding for all form controls
-$ontrol-padding-horizontal: $padding-sm;
-$control-padding-horizontal-sm: $padding-xs;
+$line-height-base: 1.5;
 
-$item-active-bg : $primary-1;
-$item-hover-bg : $primary-1;
-
-$iconfont-css-prefix : $prefix+icon;
-
-// LINK
-$link-color : $primary-color;
-$link-hover-color : $primary-5;
-$link-active-color : $primary-7;
-$link-decoration : none;
-$link-hover-decoration : none;
-// Animation
 $ease-base-out : cubic-bezier(0.7, 0.3, 0.1, 1);
 $ease-base-in : cubic-bezier(0.9, 0, 0.3, 0.7);
 $ease-out : cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -90,60 +47,8 @@ $ease-in-out-circ : cubic-bezier(0.78, 0.14, 0.15, 0.86);
 $ease-out-quint : cubic-bezier(0.23, 1, 0.32, 1);
 $ease-in-quint : cubic-bezier(0.755, 0.05, 0.855, 0.06);
 $ease-in-out-quint : cubic-bezier(0.86, 0, 0.07, 1);
-//Border color
-// Border color
-$border-color-base : hsl(0, 0, 85%); // base border outline a component
-$border-color-split : hsl(0, 0, 91%); // split border inside a component
-$border-width-base : 1px; // width of the border for a component
-$border-style-base : solid; // style of a components border
-//Outline
-$background-color-light : hsl(0, 0, 98%); // background of header and selected item
-$background-color-base : hsl(0, 0, 96%); // Default grey background color
-//Disabled states
-$disabled-color : #aaa;
-$disabled-bg : $background-color-base;
-$disabled-color-dark : #ddd;
-//Shadow
-//Buttons
-$btn-font-weight : 400;
-$btn-border-radius-base : $border-radius-base;
-$btn-border-radius-sm : $border-radius-base;
 
-$btn-primary-color : #fff;
-$btn-primary-bg : $primary-color;
 
-$btn-default-color : $text-color;
-$btn-default-bg : #fff;
-$btn-default-border : $border-color-base;
-
-$btn-danger-color : $error-color;
-$btn-danger-bg : $background-color-base;
-$btn-danger-border : $border-color-base;
-
-$btn-disable-color : $disabled-color;
-$btn-disable-bg : $disabled-bg;
-$btn-disable-border : $border-color-base;
-
-$btn-padding-base : 0 $padding-md - 1px;
-$btn-font-size-lg : $font-size-lg;
-$btn-font-size-sm : $font-size-base;
-$btn-padding-lg : $btn-padding-base;
-$btn-padding-sm : 0 $padding-xs - 1px;
-
-$btn-height-base : 32px;
-$btn-height-lg : 40px;
-$btn-height-sm : 24px;
-
-$btn-circle-size : $btn-height-base;
-$btn-circle-size-lg : $btn-height-lg;
-$btn-circle-size-sm : $btn-height-sm;
-
-$btn-group-border : $primary-5;
-//Checkbox
-//Radio
-//Radio Button
-// Media queries breakpoints
-// Extra small screen / phone
 $screen-xs : 480px;
 $screen-xs-min : $screen-xs;
 
@@ -174,70 +79,12 @@ $screen-md-max : ($screen-lg-min - 1px);
 $screen-lg-max : ($screen-xl-min - 1px);
 $screen-xl-max : ($screen-xxl-min - 1px);
 
+$ani-slow: 0.3s;
+$ani-base: 0.2s;
+$ani-fast: 0.1s;
 
-//Grid system
-$grid-columns : 24;
-$grid-gutter-width : 0;
-//Layout
-//Layout light theme
-//z-index list
-$zindex-affix : 10;
-$zindex-back-top : 10;
-$zindex-modal-mask : 1000;
-$zindex-modal : 1000;
-$zindex-notification : 1010;
-$zindex-message : 1010;
-$zindex-popover : 1030;
-$zindex-picker : 1050;
-$zindex-dropdown : 1050;
-$zindex-tooltip : 1060;
-//Animation
-// Animation
-$animation-duration-slow: 0.3s; // Modal
-$animation-duration-base: 0.2s;
-$animation-duration-fast: 0.1s; // Tooltip
-//From
-//Input
-//Tooltip
-//Popover
-//Modal
-//Progress
-//Menu
-//dark theme
-//Spin
-//Table
-//Tag
-//TimePicker
-//Carousel
-//Badge
-//Rate
-//Card
-//Comment
-//Tabs
-//BackTop
-//Avatar
-//Switch
-//Pagination
-//Breadcrumb
-//Slider
-//Tree
-//Collapse
-//Skeleton
-//Transfer
-//Message
-//Motion
-$wave-animation-width: 6px;
-//Alert
-$alert-success-border-color: #b7eb8f;
-$alert-success-bg-color: #f6ffed;
-$alert-success-icon-color: $success-color;
-$alert-info-border-color: #91d5ff;
-$alert-info-bg-color: #e6f7ff;
-$alert-info-icon-color: $info-color;
-$alert-warning-border-color: #ffe58f;
-$alert-warning-bg-color: #fffbe6;
-$alert-warning-icon-color: $warning-color;
-$alert-error-border-color: #ffa39e;
-$alert-error-bg-color: #fff1f0;
-$alert-error-icon-color: $error-color;
-//List
+$border-color: #ddd;
+$border-color-dark: #aaa;
+$border-color-light: #eee;
+
+$zindex-affix: 10;
