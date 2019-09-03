@@ -1,0 +1,26 @@
+@mixin clearfix() {
+    zoom: 1;
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+@mixin pull-l(){
+	@include clearfix();
+	float: left;
+}
+@mixin pull-r(){
+	@include clearfix();
+	float: right;
+}
+
+@mixin margin-mid($top, $bottom){
+    margin: $top auto $bottom;
+}
+

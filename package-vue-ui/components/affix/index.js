@@ -1,5 +1,5 @@
 import './style/index.scss'
-import { getPrefixCls, hasProp, isDOM, addEventListener } from '../_util/'
+import { getPrefixCls, hasProp, isDOM, addEventListener, aniFrame, cancelAniFrame, getOffsetTop, getScroll } from '../_util/'
 import classNames from 'classnames'
 
 const Affix = {
@@ -11,29 +11,71 @@ const Affix = {
     },
     data() {
         return {
-
+            top: 0,
+            events: ['resize', 'scroll'],
+            eventHandlers: {},
         }
     },
-
     mounted() {
-        const target = isDOM(this.container()) ? this.container() : window
-        setTimeout(() => {
-            this.setScrollEvent(target)
+        this.top = this.$refs.affixNode.offsetTop //初始位置
+        this.inc = setTimeout(() => {
+            this.target = isDOM(this.container()) ? this.container() : window
+            this.setNodeEvents(this.target)
+            this.setPosition({ currentTarget: this.target })
         })
     },
+    watch: {
+        container(val) {
+            this.clearNodeEvents()
+            this.setNodeEvents(val)
+            this.setPosition({ currentTarget: val })
+        },
+        offsetTop() {
+            this.setPosition({ currentTarget: this.target })
+        },
+        offsetBottom() {
+            this.setPosition({ currentTarget: this.target })
+        }
+    },
+    beforeDestroy() {
+        this.clearNodeEvents()
+        clearTimeout(this.inc)
+    },
     methods: {
-        setScrollEvent(node) {
-            if (node !== window) {
-                this.scrollHander = addEventListener(node, 'scroll', (e) => {
-                    let el = e.currentTarget
-                    let elHeight = el.getBoundingClientRect().height
-                    let elScrollHeight = el.scrollHeight
-
-                    if (el.scrollTop > elScrollHeight - elHeight - 5) {//到达底部
-                        console.log(elHeight, elScrollHeight, { target: e.currentTarget })
-                    }
-                })
+        setNodeEvents(node) {
+            if (!node) {
+                return
             }
+            this.clearNodeEvents()
+            this.events.forEach((ev) => {
+                this.eventHandlers[ev] = addEventListener(node, ev, this.setPosition)
+            })
+        },
+        clearNodeEvents() {
+            if (this.aniId) {
+                cancelAniFrame(this.aniId)
+            }
+            this.events.forEach((ev) => {
+                const handler = this.eventHandlers[ev]
+                if (handler && handler.remove) {
+                    handler.remove()
+                }
+            })
+        },
+        setPosition(e) {
+            if (this.aniId) {
+                cancelAniFrame(this.aniId)
+            }
+            let el = e.currentTarget
+            let affixNode = this.$refs.affixNode
+            let elHeight = el === window ? el.innerHeight : el.getBoundingClientRect().height
+            let offsetTop = this.offsetTop ? this.offsetTop : elHeight - this.offsetBottom
+            //container不为window时父层级的position的值 要为static
+            let scrollTop = getScroll(this.target, true)
+
+            this.aniId = aniFrame(() => {
+                affixNode.style = el !== window ? `top:${el.offsetTop+ offsetTop}px;` : `top: ${offsetTop}px;position:fixed;`
+            })
         }
     },
     render() {
@@ -41,11 +83,9 @@ const Affix = {
         const className = classNames({
             [`${prefixCls}`]: true
         })
-        const { target, offsetTop, offsetBottom, $slots } = this
+        const { $slots } = this
         return (
-            <div>
-                <div class={className} ref="affixNode">{$slots.default}</div>
-            </div>
+            <div class={className} ref="affixNode">{$slots.default}</div>
         )
     }
 }

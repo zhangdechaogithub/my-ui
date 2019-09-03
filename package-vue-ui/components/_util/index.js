@@ -65,8 +65,11 @@ export {
 import { addEventListener, triggerEvent } from './dom/event'
 export { addEventListener, triggerEvent }
 
-import { rafFunc } from './dom/raf'
-export { rafFunc }
+import { isDOM, strStyleObj, getOffsetTop, getScroll } from './dom/domOpt'
+export { isDOM, strStyleObj, getOffsetTop, getScroll }
 
-import { isDOM } from './dom/domOpt'
-export { isDOM }
+import { aniFrame, cancelAniFrame } from './animate/'
+export { aniFrame, cancelAniFrame }
+
+import { css3Keyframes, waveAni } from './animate/css3Ani'
+export { css3Keyframes, waveAni }

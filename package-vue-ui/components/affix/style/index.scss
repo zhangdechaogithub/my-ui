@@ -1,5 +1,7 @@
 @import '../../style/themes/default.scss';
-.#{$prefix}-affix{
-	position: fixed;
-	z-index: $zindex-affix;
+
+.#{$prefix}-affix {
+    position: absolute;
+    z-index: $zindex-affix;
 }
+

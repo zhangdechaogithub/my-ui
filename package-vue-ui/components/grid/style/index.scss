@@ -1,0 +1,87 @@
+@import '../../style/themes/default.scss';
+@import './mixin';
+
+$screen-xs : 480px;
+$screen-xs-min : $screen-xs;
+
+// Small screen / tablet
+$screen-sm : 576px;
+$screen-sm-min : $screen-sm;
+
+// Medium screen / desktop
+$screen-md : 768px;
+$screen-md-min : $screen-md;
+
+// Large screen / wide desktop
+$screen-lg : 992px;
+$screen-lg-min : $screen-lg;
+
+// Extra large screen / full hd
+$screen-xl : 1200px;
+$screen-xl-min : $screen-xl;
+
+// Extra extra large screen / large descktop
+$screen-xxl : 1600px;
+$screen-xxl-min : $screen-xxl;
+
+// provide a maximum
+$screen-xs-max : ($screen-sm-min - 1px);
+$screen-sm-max : ($screen-md-min - 1px);
+$screen-md-max : ($screen-lg-min - 1px);
+$screen-lg-max : ($screen-xl-min - 1px);
+$screen-xl-max : ($screen-xxl-min - 1px);
+
+.#{$prefix}-row {
+    @include make-row;
+    display: block;
+    box-sizing: border-box;
+}
+
+.#{$prefix}-row-flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    &:before,
+    &:after {
+        display: flex;
+    }
+}
+.#{$prefix}-row-flex-start {
+	justify-content: flex-start;
+}
+
+.#{$prefix}-row-flex-center {
+	justify-content: center;
+}
+
+.#{$prefix}-row-flex-end {
+	justify-content: flex-end;
+}
+
+.#{$prefix}-row-flex-space-between {
+	justify-content: space-between;
+}
+
+.#{$prefix}-row-flex-space-around {
+	justify-content: space-around;
+}
+
+.#{$prefix}-row-flex-top {
+	align-items: flex-start;
+}
+
+.#{$prefix}-row-flex-middle {
+	align-items: center;
+}
+
+.#{$prefix}-row-flex-bottom {
+	align-items: flex-end;
+}
+
+.#{$prefix}-col {
+	position: relative;
+	display: block;
+}
+
+@include make-grid-columns;
+@include make-grid;

@@ -1,0 +1,49 @@
+.affix-wrap {
+    height: 200px;
+    position: static;
+    overflow-y: auto;
+    background: white;
+    border-radius: 4px;
+
+    .affix-container {
+        div {
+            height: 1000px;
+        }
+
+    }
+}
+
+
+.anchor-wrap {
+    border: 1px solid black;
+    overflow: auto;
+
+}
+
+.anchor-ids {
+    div {
+        height: 1000px;
+    }
+
+    div:nth-child(1) {
+        background: #aaa;
+    }
+
+    div:nth-child(2) {
+        background: #eee;
+    }
+
+    div:nth-child(3) {
+        background: #ddd;
+    }
+
+    div:nth-child(4) {
+        background: orange;
+    }
+}
+
+.gutter-box{
+    background: #00a0e9;
+    color:white;
+    text-align: center;
+}

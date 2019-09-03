@@ -1,6 +1,7 @@
 import './style/index.scss'
 import { getPrefixCls } from '../_util/'
 import Icon from '../icon/'
+
 const Alert = {
     name: 'Alert',
     props: {
@@ -105,7 +106,7 @@ const Alert = {
         const alertNode = <transition></transition>
         const alertProps = {
             propsData: {
-                name: 'zoom'
+                name: 'move-down'
             },
             listeners: {
                 afterLeave: () => {

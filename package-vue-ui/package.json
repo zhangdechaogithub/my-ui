@@ -36,7 +36,6 @@
     "add-dom-event-listener": "^1.1.0",
     "classnames": "^2.2.6",
     "component-classes": "^1.2.6",
-    "enquire-js": "^0.2.1",
-    "raf": "^3.4.1"
+    "enquire-js": "^0.2.1"
   }
 }

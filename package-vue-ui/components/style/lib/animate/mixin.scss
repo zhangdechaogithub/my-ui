@@ -1,0 +1,27 @@
+@import '../../themes/default';
+
+@mixin ani-common($duration:$ani-base) {
+    animation-duration: $duration;
+    animation-fill-mode: both;
+}
+
+@mixin ani-common-leave($duration) {
+    animation-duration: $duration;
+    animation-fill-mode: both;
+}
+
+@mixin make-ani($className, $keyframeName, $duration:$ani-base) {
+    .#{$className}-enter,
+    .#{$className}-enter-active {
+        animation-name: #{$keyframeName}In;
+        @include ani-common($duration);
+        animation-play-state: running;
+    }
+
+    .#{$className}-leave,.#{$className}-leave-active {
+        animation-name: #{$keyframeName}Out;
+        @include ani-common-leave($duration);
+        animation-play-state: running;
+        pointer-events: none;
+    }
+}
