@@ -21,7 +21,7 @@ export const css3Keyframes = (clsName, processObj, func, time = .3) => {
         clearTimeout(css3Keyframes.inc)
     }
     if (processObj && typeof processObj === 'object') {
-        if(css3Keyframes.style){
+        if (css3Keyframes.style) {
             return
         }
         const style = document.createElement('style')
@@ -41,44 +41,43 @@ export const css3Keyframes = (clsName, processObj, func, time = .3) => {
     }
 }
 //for button
-export const waveAni = (node) => {
+export const waveAni = (node, callFunc) => {
     if (!isDOM(node) || waveAni.el) {
         return
     }
     var rect = node.getBoundingClientRect()
-    const color = node.style.borderColor
-    let ratioX = (rect.width + 15) / rect.width
-    let ratioY = (rect.height + 15) / rect.height
+    const getStyle = document.defaultView.getComputedStyle
+    const radius =  getStyle(node).getPropertyValue('border-radius')
+    const color = getStyle(node).getPropertyValue('border-color') || getStyle(node).getPropertyValue('background-color') 
+    let ratioX = (rect.width + 10) / rect.width
+    let ratioY = (rect.height + 10) / rect.height
     let div = document.createElement('div')
 
     let style = {
         position: 'absolute',
-        top: `${rect.top}px`,
-        left: `${rect.left}px`,
+        top: `${node.offsetTop}px`,
+        left: `${node.offsetLeft}px`,
         width: `${rect.width}px`,
         height: `${rect.height}px`,
-        [`border-radius`]: '4px',
-        [`z-index`]: '-1'
+        [`border-radius`]: `${radius}`,
+        [`background-color`]: 'transparent',
     }
     div.style = strStyleObj(style)
     let waveEffect = css3Keyframes(getPrefixCls('wave-effect'), {
         '0%': {
-            opacity: .8,
             transform: 'scale(1)',
-            border: `4px solid ${color}`,
-            [`box-shadow`]: `0px 0px 4px ${color}` //取元素边框颜色
+            border: `2px solid ${color}`,
         },
-        '100%': {
-            opacity: .2,
-            [`box-shadow`]: `0px 0px 4px transparent`,
-            border: '1px solid transparent',
+        '100%': {            
+            border: '2px solid transparent',
             transform: `scale(${ratioX}, ${ratioY})`,
         }
     }, () => {
         div.remove()
         waveAni.el = false
-    }, 1.2)
+        callFunc()
+    }, .15)
     div.classList.add(getPrefixCls('wave-effect'))
-    node.parentNode.appendChild(div)
+    node.parentNode.prepend(div)
     waveAni.el = true
 }

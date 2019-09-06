@@ -24,15 +24,12 @@ export default {
         //const AlertNode = this.getAlertTest()
         //const AffixNode = this.getAffixTest(this.affixContainer)
         //const AffixNode2 = this.getAffixWinTest(this.affixContaine)
-        const text = 'hello'
         //const anchorNode = this.getAnchorTest()
-        const rowNode = this.getRowTest()
-        const colNode = this.getColTest()
-
+        //const rowNode = this.getRowTest()
+        const button = this.getButton()
         return (
             <div>
-                {rowNode}
-                {colNode}
+                {button}
             </div>
         )
     }
