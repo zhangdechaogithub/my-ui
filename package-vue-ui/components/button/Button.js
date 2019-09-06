@@ -56,10 +56,11 @@ const Button = {
             if (sLoading) {
                 return
             }
-            waveAni(event.target, () => {
-                this.$emit('click', event)
-            })
-
+            if (event.target.nodeName === 'BUTTON') {
+                waveAni(event.target, () => {
+                    this.$emit('click', event)
+                })
+            }
         },
         inertText(child) {
             if (typeof child.text === 'string') {
@@ -84,9 +85,9 @@ const Button = {
         const buttonProps = {
             attrs: Object.assign({ disabled: disabled, type: htmlType || 'button' }, $attrs),
             class: classes,
-            on: Object.assign({
+            on: Object.assign($listeners, {
                 click: handleClick
-            }, $listeners),
+            }),
             ref: 'buttonNode'
         }
         const iconType = sLoading ? 'reload' : icon

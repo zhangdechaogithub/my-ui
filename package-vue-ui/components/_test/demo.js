@@ -4,6 +4,7 @@ import Affix from '../affix/'
 import Anchor from '../anchor/'
 import { Col, Row } from '../grid/'
 import Button from '../Button/'
+import Modal from '../Modal'
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
 
@@ -95,7 +96,7 @@ const mixinDemo = {
                     </div>
                     <div>
                         <Button type="primary" size="large">primary</Button>
-                        <Button type="primary">primary</Button>
+                        <Button type="primary" onClick={clickHandler}>primary</Button>
                         <Button type="primary" size="small">primary</Button>
                     </div>
                     <div>
@@ -197,6 +198,17 @@ const mixinDemo = {
                       </div>
                 </div>
             )
+        },
+        getModal(flag){
+            return (
+                <div class="modal-test">
+                    <Button type="primary" onClick={this.modalToggle}>modal show</Button>
+                    <Modal visible={flag}></Modal>
+                </div>
+            )
+        },
+        modalToggle(){
+            this.flag = !this.flag
         }
     }
 }

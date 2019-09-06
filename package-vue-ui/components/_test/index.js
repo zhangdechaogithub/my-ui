@@ -12,12 +12,7 @@ export default {
     },
     data() {
         return {
-            affixContainer() {
-                return document.getElementById('one')
-            },
-            containerFuncAnchor() {
-                return document.getElementById('anchorWrap')
-            }
+           flag: false
         }
     },
     render() {
@@ -26,10 +21,12 @@ export default {
         //const AffixNode2 = this.getAffixWinTest(this.affixContaine)
         //const anchorNode = this.getAnchorTest()
         //const rowNode = this.getRowTest()
-        const button = this.getButton()
+        //const button = this.getButton()
+        const modal = this.getModal(this.flag)
+        console.log('ok')
         return (
             <div>
-                {button}
+               {modal}
             </div>
         )
     }
