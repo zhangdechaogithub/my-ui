@@ -3,8 +3,8 @@ import Alert from '../alert/'
 import Affix from '../affix/'
 import Anchor from '../anchor/'
 import { Col, Row } from '../grid/'
-import Button from '../Button/'
-import Modal from '../Modal'
+import Button from '../button/'
+import Modal from '../modal/index.js'
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
 
@@ -202,8 +202,18 @@ const mixinDemo = {
         getModal(flag){
             return (
                 <div class="modal-test">
-                    <Button type="primary" onClick={this.modalToggle}>modal show</Button>
-                    <Modal visible={flag}></Modal>
+                    <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
+                    <Modal 
+                        visible={flag}
+                        title="default"
+                        closable={true}
+                        afterClose={() => console.log('close')}
+                        width={500}
+                        okText="ok"
+                        cancelText="cancel"
+                        maskClosable={false}
+                        okType="dashed"
+                    ></Modal>
                 </div>
             )
         },

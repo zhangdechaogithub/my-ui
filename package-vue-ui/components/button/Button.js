@@ -80,16 +80,16 @@ const Button = {
             sLoading,
             $slots,
             $attrs,
-            $listeners
+            //$listeners
         } = this
+        
         const buttonProps = {
             attrs: Object.assign({ disabled: disabled, type: htmlType || 'button' }, $attrs),
             class: classes,
-            on: Object.assign($listeners, {
-                click: handleClick
-            }),
+            on: { click: handleClick },
             ref: 'buttonNode'
         }
+
         const iconType = sLoading ? 'reload' : icon
         const iconNode = iconType ? <Icon type={iconType} /> : null
         const kids = this.inertText(filterEmpty($slots.default))

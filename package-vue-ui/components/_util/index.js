@@ -73,3 +73,6 @@ export { aniFrame, cancelAniFrame }
 
 import { css3Keyframes, waveAni } from './animate/css3Ani'
 export { css3Keyframes, waveAni }
+
+import provider from './provider/provider'
+export { provider }

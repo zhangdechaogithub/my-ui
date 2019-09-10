@@ -1,5 +1,6 @@
 import './style/index.scss'
 import mixinDemo from './demo'
+
 export default {
     name: 'Test',
     props: ['name'],
@@ -23,7 +24,6 @@ export default {
         //const rowNode = this.getRowTest()
         //const button = this.getButton()
         const modal = this.getModal(this.flag)
-        console.log('ok')
         return (
             <div>
                {modal}
