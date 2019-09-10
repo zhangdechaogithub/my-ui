@@ -5,7 +5,8 @@ export default {
     name: 'Test',
     props: ['name'],
     mixins: [mixinDemo],
-    mounted() {},
+    mounted() {
+    },
     methods: {
         clickHandler() {
             this.show = !this.show

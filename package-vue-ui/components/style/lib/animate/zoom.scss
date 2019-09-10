@@ -3,7 +3,7 @@
 
     .#{$className}-enter,
     .#{$className}-appear {
-        transform: scale(0);
+        //transform: scale(0);
         animation-timing-function: $ease-out-circ;
     }
 

@@ -85,8 +85,8 @@ const mixinDemo = {
                 </Row>
             )
         },
-        getButton(){
-            const clickHandler = () =>  alert('hello world')
+        getButton() {
+            const clickHandler = () => alert('hello world')
             return (
                 <div class="button-wrap">
                     <div>
@@ -199,26 +199,29 @@ const mixinDemo = {
                 </div>
             )
         },
-        getModal(flag){
+        getModal(flag) {
+            const modal = (
+                <Modal 
+                    visible={flag}
+                    title="default"
+                    closable={true}
+                    afterClose={() => this.flag = false}
+                    width={500}
+                    okText="ok"
+                    cancelText="cancel"
+                    maskClosable={false}
+                    okType="dashed"
+                ></Modal>
+            )
             return (
                 <div class="modal-test">
                     <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
-                    <Modal 
-                        visible={flag}
-                        title="default"
-                        closable={true}
-                        afterClose={() => console.log('close')}
-                        width={500}
-                        okText="ok"
-                        cancelText="cancel"
-                        maskClosable={false}
-                        okType="dashed"
-                    ></Modal>
+                    {modal}
                 </div>
             )
         },
-        modalToggle(){
-            this.flag = !this.flag
+        modalToggle() {
+            this.flag = true
         }
     }
 }
