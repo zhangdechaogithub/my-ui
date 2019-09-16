@@ -124,7 +124,7 @@ const Modal = {
                 }
                 node = (
                     <div>
-                        <Button type={okType ? okType : 'primary'} onClick={okBtnClick} loading={this.isLoad}>
+                        <Button type={okType ? okType : 'primary'} onClick={okBtnClick} loading={this.isLoad} disabled={this.isLoad}>
                             <span>{okText ? okText : provider.modal.okText}</span>
                         </Button>
                         <Button type="dashed"  onClick={cancelBtnClick}>

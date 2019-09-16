@@ -7,7 +7,6 @@ $error-color: #f5222d;
 $highlight-color: #f5222d;
 $warning-color: #fa8c16;
 $normal-color: #d9d9d9;
-$disabled-color: #aaa;
 $line-height-base : 1.5;
 $white: #fff;
 $black: #000;
@@ -53,7 +52,7 @@ $ease-in-out-quint : cubic-bezier(0.86, 0, 0.07, 1);
 $background-color-light : hsl(0, 0, 98%); 
 $background-color-base : hsl(0, 0, 96%);
 
-$disabled-color : #ddd;
+$disabled-color : #aaa;
 $disabled-bg : $background-color-base;
 $disabled-color-dark : #ddd;
 
