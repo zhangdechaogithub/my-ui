@@ -231,7 +231,7 @@ const mixinDemo = {
             return (
                 <div class="modal-test">
                     <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
-                    {confirm}
+                    {modal}
                 </div>
             )
         },

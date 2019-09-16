@@ -107,9 +107,8 @@ const Modal = {
                 node = footer
             } else {
                 const okBtnClick = () => {
-                    this.hide()
                     if (okCall) {
-                        okCall()
+                        okCall(this.hide)
                         this.$emit('ok')
                     }
                 }
