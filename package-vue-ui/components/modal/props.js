@@ -4,10 +4,10 @@ export default () => ({
         type: Boolean,
         default: false
     },
-    /** 确定按钮 loading
+    /** 确定按钮 loading*/
     confirmLoading: {
         type: Boolean
-    },*/
+    },
     /** 标题*/
     title: {
         type: null

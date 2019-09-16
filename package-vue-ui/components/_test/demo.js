@@ -214,7 +214,8 @@ const mixinDemo = {
                     cancelText="cancel"
                     maskClosable={false}
                     okType="dashed"
-                    okCall={() => console.log('onOk')}
+                    okCall={(hide) => {console.log('onOk')}}
+                    confirmLoading
                 >
                     <p>hello world-1</p>
                 </Modal>

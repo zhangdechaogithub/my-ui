@@ -10,12 +10,12 @@ const Modal = {
         return {
             isShow: false,
             closeEls: [],
-            closeElsHandlers: []
+            closeElsHandlers: [],
+            isLoad: false
         }
     },
     mounted() {
         this.$nextTick(() => {
-            console.log(this)
             const { closable } = this
             if (closable) {
                 this.closeEls = this.closeEls.concat([this.$refs.closeBtn])
@@ -107,6 +107,9 @@ const Modal = {
                 node = footer
             } else {
                 const okBtnClick = () => {
+                    if (this.confirmLoading) {
+                        this.isLoad = true
+                    }
                     if (okCall) {
                         okCall(this.hide)
                         this.$emit('ok')
@@ -121,7 +124,7 @@ const Modal = {
                 }
                 node = (
                     <div>
-                        <Button type={okType ? okType : 'primary'} onClick={okBtnClick}>
+                        <Button type={okType ? okType : 'primary'} onClick={okBtnClick} loading={this.isLoad}>
                             <span>{okText ? okText : provider.modal.okText}</span>
                         </Button>
                         <Button type="dashed"  onClick={cancelBtnClick}>
@@ -136,7 +139,7 @@ const Modal = {
                         {node}
                     </div>
                 ) : null
-                
+
             )
         },
         getWrapNode(closebtn, header, footer) {
@@ -184,7 +187,12 @@ const Modal = {
             )
         },
         hide() {
-            this.isShow = false
+            if (this.confirmLoading) {
+                this.isLoad = false
+            }
+            this.$nextTick(()=>{
+                this.isShow = false
+            })
         },
         show() {
             this.isShow = true
