@@ -39,22 +39,13 @@ const Alert = {
     },
     methods: {
         getIconCls(type) {
-            let icon
-            switch (type) {
-                case 'success':
-                    icon = 'check-circle-fill'
-                    break
-                case 'info':
-                    icon = 'info-circle-fill'
-                    break
-                case 'error':
-                    icon = 'close-circle-fill'
-                    break
-                case 'warning':
-                    icon = 'warning-circle-fill'
-                    break
+            let icon = {
+                success : 'check-circle-fill',
+                info: 'info-circle-fill',
+                error: 'close-circle-fill',
+                warning: 'warning-circle-fill'
             }
-            return icon
+            return icon[type]
         },
         getIcon(type, cls) {
             return <Icon type={type} class={cls}/>

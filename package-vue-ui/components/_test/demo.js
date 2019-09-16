@@ -220,7 +220,6 @@ const mixinDemo = {
                 </Modal>
             )
             const confirm = <Confirm 
-                    fuck="fuck"
                     type="warning"
                     visible={flag} 
                     afterClose={() => {this.flag = false}}

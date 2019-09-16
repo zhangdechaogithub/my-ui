@@ -48,11 +48,11 @@ export default () => ({
         default: true
     },
     //确定按钮回调
-    okCall: {
+    okCall: {//onOk 过不了编译,应该是关键字on的原因
         type: Function
     },   
     //取消按钮回调
-    cancelCall: {
+    cancelCall: {//onCancel 过不了编译,应该是关键字on的原因
         type: Function
     }
 })
