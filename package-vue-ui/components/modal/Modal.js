@@ -121,19 +121,22 @@ const Modal = {
                 }
                 node = (
                     <div>
-                        <Button type={okType ? okType : 'primary'} ref="okBtn" onClick={okBtnClick}>
+                        <Button type={okType ? okType : 'primary'} onClick={okBtnClick}>
                             <span>{okText ? okText : provider.modal.okText}</span>
                         </Button>
-                        <Button type="dashed" ref="cancelBtn" onClick={cancelBtnClick}>
+                        <Button type="dashed"  onClick={cancelBtnClick}>
                             <span>{cancelText ? cancelText : provider.modal.cancelText}</span>
                         </Button>
                     </div>
                 )
             }
             return (
-                <div class={footerCls}>
-                    {node}
-                </div>
+                node !== null ? (
+                    <div class={footerCls}>
+                        {node}
+                    </div>
+                ) : null
+                
             )
         },
         getWrapNode(closebtn, header, footer) {
@@ -172,7 +175,7 @@ const Modal = {
                             {closebtn}
                                {header}
                             <div class={bodyCls}>
-                                {$slots.default}
+                                {filterEmpty($slots.default)}
                             </div>
                             {footer}
                         </div>

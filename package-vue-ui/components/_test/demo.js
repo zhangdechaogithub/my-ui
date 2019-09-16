@@ -5,6 +5,9 @@ import Anchor from '../anchor/'
 import { Col, Row } from '../grid/'
 import Button from '../button/'
 import Modal from '../modal/index.js'
+
+const Confirm = Modal.Confirm
+
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
 
@@ -211,12 +214,23 @@ const mixinDemo = {
                     cancelText="cancel"
                     maskClosable={false}
                     okType="dashed"
-                ></Modal>
+                >
+                    <p>hello world-1</p>
+                </Modal>
             )
+
             return (
                 <div class="modal-test">
                     <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
-                    {modal}
+                    <Confirm 
+                    type="warning"
+                    visible={flag} 
+                    afterClose={() => {this.flag = false}}
+                    title="this is title"
+                    type="warning"
+                    >
+                        hello world
+                    </Confirm>
                 </div>
             )
         },

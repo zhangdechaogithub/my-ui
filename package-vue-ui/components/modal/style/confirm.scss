@@ -1,0 +1,61 @@
+$confirm-prefix-cls: #{$prefix}-modal-confirm;
+
+.#{$confirm-prefix-cls} {
+    .#{$prefix}-modal-header {
+        display: none;
+    }
+
+    .#{$prefix}-modal-body {
+        padding: 32px 32px 24px;
+    }
+
+    &-body-wrapper {
+        @include clearfix();
+    }
+
+    &-body {
+        .#{$confirm-prefix-cls}-title {
+            color: $text-color;
+            font-weight: 500;
+            font-size: $font-size-lg;
+            display: block;
+            overflow: hidden;
+        }
+
+        .#{$confirm-prefix-cls}-content {
+            margin-left: 38px;
+            font-size: $font-size;
+            color: $text-color-light;
+            margin-top: 8px;
+        }
+
+        >.icon {
+            font-size: 22px;
+            margin-right: 16px;
+            float: left;
+        }
+    }
+
+    .#{$confirm-prefix-cls}-btns {
+        margin-top: 24px;
+        float: right;
+
+        button+button {
+            margin-left: 8px;
+            margin-bottom: 0;
+        }
+    }
+    &-error &-body>.icon {
+        color: $error-color;
+    }
+    &-warning &-body>.icon,
+    &-confirm &-body>.icon {
+        color: $warning-color;
+    }
+    &-info &-body >.icon{
+        color: $info-color;
+    }
+    &-success &-body > .icon{
+        color: $success-color;
+    }
+}
