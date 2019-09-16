@@ -48,11 +48,11 @@ export default () => ({
         default: true
     },
     //确定按钮回调
-    onOk: {
+    okCall: {
         type: Function
     },   
     //取消按钮回调
-    onCancel: {
+    cancelCall: {
         type: Function
     }
 })

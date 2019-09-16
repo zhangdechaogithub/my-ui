@@ -214,23 +214,25 @@ const mixinDemo = {
                     cancelText="cancel"
                     maskClosable={false}
                     okType="dashed"
+                    okCall={() => console.log('onOk')}
                 >
                     <p>hello world-1</p>
                 </Modal>
             )
-
-            return (
-                <div class="modal-test">
-                    <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
-                    <Confirm 
+            const confirm = <Confirm 
+                    fuck="fuck"
                     type="warning"
                     visible={flag} 
                     afterClose={() => {this.flag = false}}
-                    title="this is title"
-                    type="warning"
+                    title="this is hello world"
+                    okCall={(hide) => {hide();console.log('okCall')}}
                     >
                         hello world
                     </Confirm>
+            return (
+                <div class="modal-test">
+                    <Button type="primary" onClick={this.modalToggle}>modal Show</Button>
+                    {confirm}
                 </div>
             )
         },

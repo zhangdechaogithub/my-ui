@@ -15,6 +15,7 @@ const Modal = {
     },
     mounted() {
         this.$nextTick(() => {
+            console.log(this)
             const { closable } = this
             if (closable) {
                 this.closeEls = this.closeEls.concat([this.$refs.closeBtn])
@@ -98,8 +99,8 @@ const Modal = {
                     okType,
                     okText,
                     cancelText,
-                    onOk,
-                    onCancel
+                    okCall,
+                    cancelCall
             } = this
             let node
             if (footer || footer === null) {
@@ -107,15 +108,15 @@ const Modal = {
             } else {
                 const okBtnClick = () => {
                     this.hide()
-                    if (onOk) {
-                        onOk()
+                    if (okCall) {
+                        okCall()
                         this.$emit('ok')
                     }
                 }
                 const cancelBtnClick = () => {
                     this.hide()
-                    if (onCancel) {
-                        onCancel()
+                    if (cancelCall) {
+                        cancelCall()
                         this.$emit('cancel')
                     }
                 }

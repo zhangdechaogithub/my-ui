@@ -17,21 +17,16 @@ const Confirm = {
         visible: {
             type: Boolean
         },
-        closable: {
-            type: Boolean
-        },
         afterClose: {
             type: Function
         },
-        onOk: {
+        okCall: {
             type: Function
-        }
+        },
     },
     data() {
         return {
-            isShow: false,
-            //closeEls: [],
-            // closeElsHandlers: []
+            isShow: false
         }
     },
     watch: {
@@ -65,9 +60,9 @@ const Confirm = {
                 this.isShow = false
             }
             const clickOk = () => {
-                this.onOk && this.onOk()
-                this.isShow = false
+                this.okCall && this.okCall(this.hideCall)
             }
+            
             return this.type !== 'confirm' ?
                 (<div class={btnCls}>
                     <Button type="primary" onClick={clickOk}>
@@ -99,6 +94,9 @@ const Confirm = {
                     {btns}
                 </div>
             )
+        },
+        hideCall(){
+            this.isShow = false
         }
     },
     render() {
@@ -117,7 +115,6 @@ const Confirm = {
             width: 450,
             maskClosable: false,
             footer: null,
-
         })
         modal.componentOptions.children = [this.getConfirmBody($slots.default)]
         return modal
