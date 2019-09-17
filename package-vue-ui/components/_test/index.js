@@ -24,10 +24,11 @@ export default {
         //const anchorNode = this.getAnchorTest()
         //const rowNode = this.getRowTest()
         //const button = this.getButton()
-        const modal = this.getModal(this.flag)
+        //const modal = this.getModal(this.flag)
+        const Breadcrumb = this.getBreadcrumb()
         return (
             <div>
-               {modal}
+               {Breadcrumb}
             </div>
         )
     }

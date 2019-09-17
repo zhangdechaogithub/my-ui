@@ -4,13 +4,13 @@ import Affix from '../affix/'
 import Anchor from '../anchor/'
 import { Col, Row } from '../grid/'
 import Button from '../button/'
-import Modal from '../modal/index.js'
-
+import Modal from '../modal/'
+//import Demo from './demo/'
+import Breadcrumb from '../breadcrumb/'
+const BreadcrumbItem = Breadcrumb.Item
 const Confirm = Modal.Confirm
-
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
-
 const mixinDemo = {
     methods: {
         //alert test ======================================================================================
@@ -238,6 +238,25 @@ const mixinDemo = {
         },
         modalToggle() {
             this.flag = true
+        },
+        getBreadcrumb(){
+            const routes = [
+                {
+                    path: '/one/:id',
+                    breadcrumbName: 'one'
+                },
+                {
+                    path: '/two/:id',
+                    breadcrumbName: 'two:id'
+                }
+            ]
+            const bread1 = <Breadcrumb routes={routes} params={{id: 2}}></Breadcrumb>  
+            const bread2 = <Breadcrumb>
+                                <BreadcrumbItem href="#/hello">Application</BreadcrumbItem>     
+                           </Breadcrumb>    
+            return (
+               bread1
+            )
         }
     }
 }
