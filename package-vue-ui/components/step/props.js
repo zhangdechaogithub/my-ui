@@ -23,7 +23,7 @@ const stepItemProps = {
     title: {
         type: null
     },
-    processDot: {
+    progressDot: {
         type: [Boolean, Function],
 
     },
@@ -52,7 +52,7 @@ const stepListProps = {
         type: String,
         default: 'process',
     },
-    processDot: {
+    progressDot: {
         type: [Boolean, Function],
     },
     initial: {
