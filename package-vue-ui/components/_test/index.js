@@ -1,11 +1,12 @@
 import './style/index.scss'
 import mixinDemo from './demo'
-
+import Demo from './demo/'
 export default {
     name: 'Test',
     props: ['name'],
     mixins: [mixinDemo],
     mounted() {
+        
     },
     methods: {
         clickHandler() {
@@ -25,11 +26,10 @@ export default {
         //const rowNode = this.getRowTest()
         //const button = this.getButton()
         //const modal = this.getModal(this.flag)
-        const Breadcrumb = this.getBreadcrumb()
+        //const Breadcrumb = this.getBreadcrumb()
+        const step = this.getStep()
         return (
-            <div>
-               {Breadcrumb}
-            </div>
+           <div>{step}</div>
         )
     }
 }

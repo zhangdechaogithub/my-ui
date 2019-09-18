@@ -20,7 +20,6 @@ const BreadcrumbItem = {
         let link = hasProp(this, 'href') ?
             (<a class={prefixCls} href={href}>{children}</a>) :
             (<span class={prefixCls}>{children}</span>)
-        console.log(link)
         return children ? (
             <span>
             	{link}

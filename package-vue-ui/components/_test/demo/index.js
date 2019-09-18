@@ -1,9 +1,15 @@
 import './style/index.scss'
 const Demo = {
     name: 'Demo',
+    mounted(){
+    	console.log('$slots', this.$slots)
+    	console.log('$scopedSlots', this.$scopedSlots)
+    },
     render() {
         return (
-            <div>demo component</div>
+           <div>
+                {this.$scopedSlots.header()}
+           </div>
         )
     }
 }

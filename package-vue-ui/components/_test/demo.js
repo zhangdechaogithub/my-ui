@@ -7,6 +7,8 @@ import Button from '../button/'
 import Modal from '../modal/'
 //import Demo from './demo/'
 import Breadcrumb from '../breadcrumb/'
+import Step from '../step/'
+const StepItem = Step.Item
 const BreadcrumbItem = Breadcrumb.Item
 const Confirm = Modal.Confirm
 const Link = Anchor.Link
@@ -256,6 +258,15 @@ const mixinDemo = {
                            </Breadcrumb>    
             return (
                bread1
+            )
+        },
+        getStep(){
+            return (
+                <Step current={1}>
+                    <StepItem title="Finished" description="This is a description." />
+                    <StepItem title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
+                    <StepItem title="Waiting" description="This is a description." /><div>hello world</div>
+                </Step>
             )
         }
     }
