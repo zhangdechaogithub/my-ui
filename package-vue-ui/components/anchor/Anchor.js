@@ -7,11 +7,19 @@ import Affix from '../affix/'
 const Anchor = {
     name: 'Anchor',
     props: {
-        offsetTop: Number,
-        affix: Boolean,
+        offsetTop: {
+            type:Number
+        },
+        affix: {
+            type: Boolean
+        },
         //container: Function,
-        wrapCls: String,
-        wrapStyle: Object
+        wrapCls: {
+            type: String
+        },
+        wrapStyle: {
+            type: Object
+        }
     },
     provide() {
         return {

@@ -59,9 +59,7 @@ const mixinDemo = {
             return (
                 <div class="anchor-wrap" id="anchorWrap">
                    <Anchor affix={true} container={container} offsetTop={100} wrapCls={'hello world'}>
-                        <Link href="#1st" title="1st first">
-                            <h3>hello world</h3>
-                        </Link>
+                        <Link href="#1st" title="1st first"></Link>
                         <Link href="#2nd" title="2nd second" />
                         <Link href="#3th" title="3th third" />
                         <Link href="#4th" title="4th fouth" />

@@ -3,8 +3,12 @@ import { getPrefixCls } from '../_util/'
 const AnchorLink = {
     name: 'AnchorLink',
     props: {
-        href: String,
-        title: String
+        href: {
+            type: String
+        },
+        title: {
+            type: String
+        }
     },
     inject: {
         anchor: { default: () => ({}) },
