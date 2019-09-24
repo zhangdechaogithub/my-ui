@@ -7,8 +7,8 @@ import Button from '../button/'
 import Modal from '../modal/'
 //import Demo from './demo/'
 import Breadcrumb from '../breadcrumb/'
-import Step from '../step/'
-const StepItem = Step.Item
+import Steps from '../steps/'
+const StepItem = Steps.Item
 const BreadcrumbItem = Breadcrumb.Item
 const Confirm = Modal.Confirm
 const Link = Anchor.Link
@@ -259,12 +259,32 @@ const mixinDemo = {
             )
         },
         getStep(){
-            return (
-                <Step current={1}>
+            /*
+            <Steps current={1}>
                     <StepItem title="Finished" description="This is a description." />
                     <StepItem title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
-                    <StepItem title="Waiting" description="This is a description." /><div>hello world</div>
-                </Step>
+                    <StepItem title="Waiting" description="This is a description." />
+                </Steps>
+            <Steps current={1}>
+                   <StepItem status="finish" title="Login" icon={<Icon type="user" />} />
+                   <StepItem status="finish" title="Verification" icon={<Icon type="solution" />} />
+                   <StepItem status="process" title="Pay" icon={<Icon type="solution" />} />
+                   <StepItem status="wait" title="Done" icon={<Icon type="user" />} />
+                </Steps>
+                <Steps size="small" current={1} status="error">
+                    <StepItem title="Finished" description="This is a description." />
+                    <StepItem title="In Progress" description="This is a description." />
+                    <StepItem title="Waiting" description="This is a description." />
+                </Steps>
+                
+             */
+            return (
+                <Steps progressDot current={1} direction="vertical" >
+                  <StepItem title="Finished" description="You can hover on the dot." />
+                    <StepItem title="In Progress" description="You can hover on the dot." />
+                    <StepItem title="Waiting" description="You can hover on the dot." />
+                    <StepItem title="Waiting" description="You can hover on the dot." />
+                </Steps>
             )
         }
     }

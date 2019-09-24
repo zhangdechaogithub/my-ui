@@ -6,7 +6,7 @@ const stepItem = {
     methods: {
         renderIconNode() {
             const {
-                prefixCls = getPrefixCls('step'),
+                prefixCls = getPrefixCls('steps'),
                     stepNumber,
                     status,
                     icons,
@@ -38,7 +38,7 @@ const stepItem = {
                 } else {
                     iconNode = <span class={`${prefixCls}-icon`}>{iconDot}</span>;
                 }
-            } else if (icon && !isString(icon)) {
+            } else if (icon && !(typeof icon === 'string')) {
                 iconNode = <span class={`${prefixCls}-icon`}>{icon}</span>
             } else if (icons && icons.finish && status === 'finish') {
                 iconNode = <span class={`${prefixCls}-icon`}>{icons.finish}</span>
@@ -54,7 +54,7 @@ const stepItem = {
     },
     render() {
         const {
-            prefixCls = getPrefixCls('step'),
+            prefixCls = getPrefixCls('steps'),
                 itemWidth,
                 status = 'wait',
                 tailContent,

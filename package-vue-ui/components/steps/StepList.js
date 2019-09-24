@@ -74,7 +74,6 @@ const StepList = {
             [`${prefixCls}-label-${adjustedlabelPlacement}`]: direction === 'horizontal',
             [`${prefixCls}-dot`]: !!progressDot,
         }
-        
         const listProps = {
             class: clsStr,
             ref: 'steps',

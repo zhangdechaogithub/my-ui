@@ -59,6 +59,11 @@ const stepListProps = {
         type: Number,
         default: 0
     },
+    size: {
+        validator(value) {
+            return ['default', 'small'].includes(value)
+        }
+    },
     current: {
         type: Number,
         default: 0

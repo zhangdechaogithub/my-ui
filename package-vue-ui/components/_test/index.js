@@ -6,7 +6,9 @@ export default {
     props: ['name'],
     mixins: [mixinDemo],
     mounted() {
-        
+        setTimeout(() => {
+            //this.$refs.aniTest.style.top = '200px'
+        }, 1000)
     },
     methods: {
         clickHandler() {
@@ -22,14 +24,16 @@ export default {
         //const AlertNode = this.getAlertTest()
         //const AffixNode = this.getAffixTest(this.affixContainer)
         //const AffixNode2 = this.getAffixWinTest(this.affixContaine)
-        const anchorNode = this.getAnchorTest()
+        //const anchorNode = this.getAnchorTest()
         //const rowNode = this.getRowTest()
         //const button = this.getButton()
         //const modal = this.getModal(this.flag)
         //const Breadcrumb = this.getBreadcrumb()
-        //const step = this.getStep()
+        const step = this.getStep()
         return (
-           <div>{anchorNode}</div>
+           <div class="ani-test" ref="aniTest">
+               {step}
+           </div>
         )
     }
 }
