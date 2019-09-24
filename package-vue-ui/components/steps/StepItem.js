@@ -22,7 +22,7 @@ const stepItem = {
             const iconClassName = {
                 [`${prefixCls}-icon`]: true,
                 [`icon`]: true,
-                [`}icon-${icon}`]: icon && typeof icon === 'string',
+                [`icon-${icon}`]: icon && typeof icon === 'string',
                 [`icon-check`]: !icon && status === 'finish' && (icons && !icons.finish),
                 [`icon-close`]: !icon && status === 'error' && (icons && !icons.error),
             }

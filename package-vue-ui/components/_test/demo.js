@@ -276,15 +276,21 @@ const mixinDemo = {
                     <StepItem title="In Progress" description="This is a description." />
                     <StepItem title="Waiting" description="This is a description." />
                 </Steps>
-                
-             */
-            return (
                 <Steps progressDot current={1} direction="vertical" >
                   <StepItem title="Finished" description="You can hover on the dot." />
                     <StepItem title="In Progress" description="You can hover on the dot." />
                     <StepItem title="Waiting" description="You can hover on the dot." />
                     <StepItem title="Waiting" description="You can hover on the dot." />
                 </Steps>
+             */
+            return (
+                <Steps current={1}>
+                   <StepItem status="finish" title="Login" icon={<Icon type="user" />} />
+                   <StepItem status="finish" title="Verification" icon={<Icon type="solution" />} />
+                   <StepItem status="process" title="Pay" icon={<Icon type="solution" />} />
+                   <StepItem status="wait" title="Done" icon={<Icon type="user" />} />
+                </Steps>
+                
             )
         }
     }
