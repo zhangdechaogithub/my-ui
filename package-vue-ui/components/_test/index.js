@@ -7,9 +7,9 @@ export default {
     mixins: [mixinDemo],
     mounted() {
         setTimeout(() => {
-            this.$refs.aniTest.style.top = '200px'
+            //this.$refs.aniTest.style.top = '200px'
         }, 1000)
-        this.$refs.aniTest.addEventListener('transitionend', () => alert('finish'), false)
+        //this.$refs.aniTest.addEventListener('transitionend', () => alert('finish'), false)
     },
     methods: {
         clickHandler() {
@@ -34,7 +34,7 @@ export default {
         const Pagination = this.getPagination()
         return (
            <div class="ani-test" ref="aniTest">
-               Pagination
+               {Pagination}
            </div>
         )
     }

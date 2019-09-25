@@ -1,14 +1,7 @@
 import './style/index.scss'
-const Pagination = {
-    name: 'Pagination',
-    mounted(){
-    },
-    render() {
-        return (
-           <div>
-               Pagination
-           </div>
-        )
-    }
+import Pagination from './Pagination'
+
+Pagination.install = (Vue) => {
+   Vue.component(Pagination.name, Pagination)
 }
 export default Pagination

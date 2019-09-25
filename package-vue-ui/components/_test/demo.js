@@ -3,7 +3,7 @@ import Pagination from '../pagination/'
 const mixinDemo = {
     methods: {
        getPagination(){
-           <Pagination />
+           return <Pagination total={50} current={12}/>
        }
     }
 }
