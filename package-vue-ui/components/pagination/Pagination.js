@@ -42,14 +42,15 @@ const Pagination = {
             }
             const inputChangeHandler = (et) => {
                 const val = parseInt(et.target.value)
-                if (val > 0 && val <= this.total) {
+                let totalPage = window.Math.ceil(this.total/this.curPageSize)
+                if (val > 0 && val <= totalPage) {
                     this.curPage = val
                 }
                 if (val <= 0) {
                     this.curPage = 1
                 }
-                if (val > this.total) {
-                    this.curPage = this.total
+                if (val > totalPage) {
+                    this.curPage = totalPage
                 }
             }
             return (<li class={cls}>
