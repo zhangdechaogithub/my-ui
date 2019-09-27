@@ -7,9 +7,29 @@ const paginationProps = {
         type: Number,
         default: 0
     },
+    showTotal: {
+        type: Boolean
+    },
     pageSize: {
         type: Number,
         default: 10
+    },
+    pageSizeOptions: {
+        validator(val) {
+            if (val.constructor === Array) {
+                let i = 0;
+                while (i < val.length) {
+                    if (parseInt(val[i])) {
+                        i++
+                    } else {
+                        return false
+                    }
+                }
+                return true
+
+            }
+            return false
+        }
     },
     showTotal: {
         type: Boolean,
@@ -29,6 +49,21 @@ const paginationProps = {
     },
     disabled: {
         type: Boolean
+    },
+    showQuickJumper: {
+        type: Boolean
+    },
+    size: {
+        validator(value) {
+            return ['small', 'default'].includes(value)
+        },
+        default: 'default'
+    },
+    showSizeChanger:{
+        type: Boolean
+    },
+    changeFunc:{
+        type: Function
     }
 }
 export { paginationProps }
@@ -40,8 +75,8 @@ const pageItemProps = {
     active: {
         type: Number
     },
-    type:{
-    	validator(value) {
+    type: {
+        validator(value) {
             return ['select', 'page', 'jumpPrev', 'jumpNext', 'prev', 'next', 'goInput'].includes(value)
         }
     },

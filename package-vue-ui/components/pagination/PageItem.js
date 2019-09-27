@@ -16,17 +16,18 @@ const PageItem = {
             const cls = {
                 [`${prefixCls}`]: true,
                 [`${prefixCls}-active`]: active === page,
-                [`${prefixCls}-disabled`]: disabled
+                [`${getPrefixCls('pagination')}-disabled`]: disabled
             }
             return <li class={cls} onClick={this.pageItemClick}><a>{page}</a></li>
         },
         getJumpPrevItem() {
-        	const { prefixCls = getPrefixCls('pagination'), jumpPrevIcon} = this
-        	const icon = jumpPrevIcon || <Icon type="doubleleft" class={`${prefixCls}-item-link-icon`}/>
-        	const cls = {
-        		[`${prefixCls}-jump-prev-custom-icon`]: !jumpPrevIcon,
-        		[`${prefixCls}-jump-prev`]: true
-        	}
+            const { prefixCls = getPrefixCls('pagination'), jumpPrevIcon, disabled } = this
+            const icon = jumpPrevIcon || <Icon type="doubleleft" class={`${prefixCls}-item-link-icon`}/>
+            const cls = {
+                [`${prefixCls}-jump-prev-custom-icon`]: !jumpPrevIcon,
+                [`${prefixCls}-jump-prev`]: true,
+                [`${getPrefixCls('pagination')}-disabled`]: disabled
+            }
 
             return (<li class={cls} onClick={this.jumpPrevItemClick}>
             			<a class={`${prefixCls}-item-link`}>
@@ -38,12 +39,13 @@ const PageItem = {
             	   </li>)
         },
         getJumpNextItem() {
-            const { prefixCls = getPrefixCls('pagination'), jumpNextIcon} = this
+            const { prefixCls = getPrefixCls('pagination'), jumpNextIcon, disabled } = this
             const icon = jumpNextIcon || <Icon type="doubleright" class={`${prefixCls}-item-link-icon`} />
-        	const cls = {
-        		[`${prefixCls}-jump-next-custom-icon`]: !jumpNextIcon,
-        		[`${prefixCls}-jump-next`]: true
-        	}
+            const cls = {
+                [`${prefixCls}-jump-next-custom-icon`]: !jumpNextIcon,
+                [`${prefixCls}-jump-next`]: true,
+                [`${getPrefixCls('pagination')}-disabled`]: disabled
+            }
             return (<li class={cls} onClick={this.jumpNextItemClick}>
 	            		<a class={`${prefixCls}-item-link`}>
 	            			<div class={`${prefixCls}-item-container`}>
@@ -54,25 +56,26 @@ const PageItem = {
 	            	</li>)
         },
         getPrevItem() {
-            const { prefixCls = getPrefixCls('pagination-item')} = this
-        	const cls = {
-        		[`${prefixCls}`]: true,
-        	}
-            return <li class={cls}>{this.page}</li>
+            const { prefixCls = getPrefixCls('pagination'), disabled, prevIcon } = this
+            const icon = prevIcon || <Icon type="left" />
+            const cls = {
+                [`${prefixCls}-prev`]: true,
+                [`${getPrefixCls('pagination')}-disabled`]: disabled || this.context.curPage === 1
+            }
+            return (<li class={cls} onClick={this.prevItemClick}>
+            			<a class={`${prefixCls}-item-link`}>{icon}</a>
+            		</li>)
         },
         getNextItem() {
-            const { prefixCls = getPrefixCls('pagination-item')} = this
-        	const cls = {
-        		[`${prefixCls}`]: true,
-        	}
-            return <li class={cls}>{this.page}</li>
-        },
-        getGoInputItem() {
-            const { prefixCls = getPrefixCls('pagination-item')} = this
-        	const cls = {
-        		[`${prefixCls}`]: true,
-        	}
-            return <li class={cls}>{this.page}</li>
+            const { prefixCls = getPrefixCls('pagination'), disabled, nextIcon } = this
+            const icon = nextIcon || <Icon type="right" />
+            const cls = {
+                [`${prefixCls}-next`]: true,
+                [`${prefixCls}-disabled`]: disabled || this.context.curPage === this.context.total
+            }
+            return (<li class={cls} onClick={this.nextItemClick}>
+		            	<a class={`${prefixCls}-item-link`}>{icon}</a>
+		            </li>)
         },
         getItem(type) {
             let itemType = {
@@ -85,14 +88,31 @@ const PageItem = {
             return itemType[type]
         },
         pageItemClick() {
-        	this.context.curPage = this.page
-        	this.context.$emit('click', this.page)
+            if (!this.disabled) {
+                this.context.curPage = this.page
+                //this.context.$emit('click', this.page)
+            }
         },
-        jumpPrevItemClick(){
-        	this.context.curPage = this.context.curPage - 3
+        jumpPrevItemClick() {
+            if (!this.disabled) {
+                this.context.curPage = this.context.curPage - 3
+            }
+
         },
-        jumpNextItemClick(){
-        	this.context.curPage = this.context.curPage + 3
+        jumpNextItemClick() {
+            if (!this.disabled) {
+                this.context.curPage = this.context.curPage + 3
+            }
+        },
+        prevItemClick() {
+            if (!this.disabled && this.context.curPage > 1) {
+                this.context.curPage = this.context.curPage - 1
+            }
+        },
+        nextItemClick() {
+            if (!this.disabled && this.context.curPage < this.context.total) {
+                this.context.curPage = this.context.curPage + 1
+            }
         }
     },
     render() {
