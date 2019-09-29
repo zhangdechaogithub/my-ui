@@ -8,7 +8,7 @@ $pagination-item-size-sm: 24px;
 $pagination-font-family: Arial;
 $pagination-font-weight-active: 500;
 
-@mixin input() {
+@mixin input($width) {
     margin-right: 8px;
     box-sizing: border-box;
     background-color: $white;
@@ -17,6 +17,7 @@ $pagination-font-weight-active: 500;
     outline: none;
     padding: 0 6px;
     height: 100%;
+    width: $width;
     text-align: center;
     transition: border-color 0.3s;
 
@@ -267,7 +268,10 @@ $pagination-font-weight-active: 500;
 
     }
 
-    &-slash {}
+    &-slash {
+        margin: 0 10px 0 5px;
+    }
+
 
     &-options {
         display: inline-block;
@@ -282,30 +286,48 @@ $pagination-font-weight-active: 500;
             line-height: 32px;
 
             input {
-                @include input();
+                @include input(50px);
                 margin: 0 8px;
-                width: 50px;
             }
         }
-        select{
+
+        select {
             width: 100px;
-            option div{
+
+            option div {
                 display: inline-block;
                 padding: 10px 5px;
             }
         }
     }
-    &-total-text{
+
+    &-total-text {
         display: inline-block;
         vertical-align: middle;
         margin-left: 20px;
         user-select: none;
-        span{
+
+        span {
             margin: 0 8px;
         }
     }
-    &.#{$pagination-prefix-cls}-mini {
-        
+
+    &-simple &-simple-pager {
+        display: inline-block;
+        margin-right: 8px;
+        height: $pagination-item-size-sm;
+
+        input {
+            @include input(60px);
+            margin: 0 8px;
+        }
+    }
+
+    &.#{$pagination-prefix-cls}-mini,
+    &.#{$pagination-prefix-cls}-simple {
+        height: $pagination-item-size-sm;
+        line-height: $pagination-item-size-sm;
+        vertical-align: top;
 
         .#{$pagination-prefix-cls}-item {
             margin: 0;
@@ -321,11 +343,12 @@ $pagination-font-weight-active: 500;
         }
 
         .#{$pagination-prefix-cls}-prev,
-        .#{$pagination-prefix-cls}-next{
+        .#{$pagination-prefix-cls}-next {
             margin: 0;
             min-width: $pagination-item-size-sm;
             height: $pagination-item-size-sm;
             line-height: $pagination-item-size-sm - 2px;
+
             &.#{$pagination-prefix-cls}-disabled {
                 background: transparent;
             }
@@ -338,7 +361,7 @@ $pagination-font-weight-active: 500;
             a {
                 height: $pagination-item-size-sm;
                 line-height: $pagination-item-size-sm;
-               
+
             }
         }
 

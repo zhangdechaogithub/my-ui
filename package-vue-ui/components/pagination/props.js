@@ -64,6 +64,9 @@ const paginationProps = {
     },
     changeFunc:{
         type: Function
+    },
+    simple:{
+        type: Boolean
     }
 }
 export { paginationProps }
@@ -77,7 +80,7 @@ const pageItemProps = {
     },
     type: {
         validator(value) {
-            return ['select', 'page', 'jumpPrev', 'jumpNext', 'prev', 'next', 'goInput'].includes(value)
+            return ['select', 'page', 'jumpPrev', 'jumpNext', 'prev', 'next', 'simple'].includes(value)
         }
     },
     prevIcon: {

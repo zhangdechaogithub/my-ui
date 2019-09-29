@@ -8,9 +8,6 @@ const PageItem = {
         context: { default: () => ({}) }
     },
     methods: {
-        getSelectItem() {
-            return <li>{this.page}</li>
-        },
         getPageItem() {
             const { page, disabled, active, prefixCls = getPrefixCls('pagination-item') } = this
             const cls = {
@@ -71,7 +68,7 @@ const PageItem = {
             const icon = nextIcon || <Icon type="right" />
             const cls = {
                 [`${prefixCls}-next`]: true,
-                [`${prefixCls}-disabled`]: disabled || this.context.curPage === this.context.total
+                [`${prefixCls}-disabled`]: disabled || this.context.curPage === this.context.lastPage
             }
             return (<li class={cls} onClick={this.nextItemClick}>
 		            	<a class={`${prefixCls}-item-link`}>{icon}</a>
@@ -83,14 +80,13 @@ const PageItem = {
                 'jumpPrev': this.getJumpPrevItem(),
                 'jumpNext': this.getJumpNextItem(),
                 'prev': this.getPrevItem(),
-                'next': this.getNextItem()
+                'next': this.getNextItem(),
             }
             return itemType[type]
         },
         pageItemClick() {
             if (!this.disabled) {
                 this.context.curPage = this.page
-                //this.context.$emit('click', this.page)
             }
         },
         jumpPrevItemClick() {
@@ -110,7 +106,7 @@ const PageItem = {
             }
         },
         nextItemClick() {
-            if (!this.disabled && this.context.curPage < this.context.total) {
+            if (!this.disabled && this.context.curPage <this.context.lastPage) {
                 this.context.curPage = this.context.curPage + 1
             }
         }
