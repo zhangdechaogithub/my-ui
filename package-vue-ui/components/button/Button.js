@@ -4,6 +4,7 @@ import { getPrefixCls, filterEmpty, waveAni } from '../_util/'
 
 const Button = {
     name: 'Button',
+    BUTTON: true,//备用属性，做标记
     data() {
         return {
             sizeMap: {

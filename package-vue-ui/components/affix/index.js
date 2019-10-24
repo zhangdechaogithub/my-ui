@@ -5,9 +5,15 @@ import classNames from 'classnames'
 const Affix = {
     name: 'Affix',
     props: {
-        container: Function,
-        offsetTop: Number,
-        offsetBottom: Number
+        container: {
+            type:Function
+        },
+        offsetTop: {
+            type: Number
+        },
+        offsetBottom: {
+            type: Number
+        }
     },
     data() {
         return {

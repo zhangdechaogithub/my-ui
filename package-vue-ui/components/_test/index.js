@@ -1,15 +1,12 @@
 import './style/index.scss'
 import mixinDemo from './demo'
 import Demo from './demo/'
+import { alignToNode } from '../_util/'
 export default {
     name: 'Test',
     props: ['name'],
     mixins: [mixinDemo],
     mounted() {
-        setTimeout(() => {
-            //this.$refs.aniTest.style.top = '200px'
-        }, 1000)
-        //this.$refs.aniTest.addEventListener('transitionend', () => alert('finish'), false)
     },
     methods: {
         clickHandler() {
@@ -18,7 +15,7 @@ export default {
     },
     data() {
         return {
-           flag: false
+            flag: false
         }
     },
     render() {
@@ -31,10 +28,13 @@ export default {
         //const modal = this.getModal(this.flag)
         //const Breadcrumb = this.getBreadcrumb()
         //const step = this.getStep()
-        const Pagination = this.getPagination()
+        //const Pagination = this.getPagination()
+        //const Menu = this.getMenu()
+        const tooltip = this.getToolTip()
+        //
         return (
-           <div class="ani-test" ref="aniTest">
-               {Pagination}
+            <div class="ani-test" ref="aniTest">
+               {tooltip}
            </div>
         )
     }

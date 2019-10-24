@@ -2,7 +2,7 @@
     <div class="home" id="el">
         <div class="">
             <!--/////=========================================================test-component-->
-            <Test class="test-outer-wrap ok go" name="world">
+            <Test class="test-outer-wrap" name="world">
                 
             </Test>
             <!--////====================================================-->
@@ -38,11 +38,14 @@ export default {
     },
     mounted() {
         //console.log({ Link })
+        //const element =  document.querySelector('.animate-test')
+        //element.classList.add('animated', 'zoomInUp')
     }
 }
 </script>
 <style lang="scss">
 @import '../../public/index.css';
+@import './animate.css';
 .home {
     padding: 3%;
 }
@@ -50,5 +53,10 @@ export default {
     div{
         height: 500px;
     }
+}
+.animate-test {
+  animation-duration: .5s;
+  animation-delay: 1s;
+  //animation-iteration-count: infinite;
 }
 </style>

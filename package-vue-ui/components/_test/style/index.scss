@@ -42,24 +42,33 @@
     }
 }
 
-.gutter-box{
+.gutter-box {
     background: #00a0e9;
-    color:white;
+    color: white;
     text-align: center;
 }
 
-.button-wrap{
-    button{margin:20px 0;}
+.button-wrap {
+    button {
+        margin: 20px 0;
+    }
+
     background: #ddd;
 }
-.modal-test{
-    button{
+
+.modal-test {
+    button {
         //z-index: 2000;
     }
 }
 
-.ani-test{
+.ani-test {
     position: relative;
-    top: 0px;
+    top: 100px;
     transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    width: 300px;
+    margin: 0 auto;
+
 }
+

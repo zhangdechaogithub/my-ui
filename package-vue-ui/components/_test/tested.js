@@ -11,6 +11,7 @@ const BreadcrumbItem = Breadcrumb.Item
 const Confirm = Modal.Confirm
 const Link = Anchor.Link
 const ButtonGroup = Button.Group
+import Pagination from '../pagination/'
 export default {
     //alert test ======================================================================================
     getAlertTest() {
@@ -288,5 +289,18 @@ export default {
                 </Steps>
 
         )
-    }
+    },
+    getPagination(){
+           return <Pagination 
+                    total={500} 
+                    current={12} 
+                    showQuickJumper 
+                    pageSizeOptions={[10, 20, 30, 40]}
+                    showTotal
+                    showSizeChanger
+                    changeFunc={(page, size, total) => {
+                        console.log({page,size, total})
+                    }}
+                />
+       }
 }
